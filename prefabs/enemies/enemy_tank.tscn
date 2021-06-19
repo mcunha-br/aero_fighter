@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/sprites/tank/tank_base_0.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/tank/tank_base_0_weapon_0.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/tank/tank_base_0_destoyed.png" type="Texture" id=3]
+[ext_resource path="res://scritps/enemies/enemy_tank.gd" type="Script" id=4]
+[ext_resource path="res://prefabs/others/explosion_1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scritps/enemies/enemy_turret.gd" type="Script" id=6]
+[ext_resource path="res://prefabs/others/enemy_weapon.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 12.1228 )
+
+[node name="enemy_tank" type="Area2D" groups=[
+"enemy",
+]]
+script = ExtResource( 4 )
+explosion = ExtResource( 5 )
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 0, 32, 32 )
+
+[node name="turret" type="Node2D" parent="sprite"]
+rotation = 1.5708
+script = ExtResource( 6 )
+
+[node name="turret" type="Sprite" parent="sprite/turret"]
+rotation = 4.71239
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 256, 0, 32, 32 )
+
+[node name="enemy_weapon" parent="sprite/turret" instance=ExtResource( 7 )]
+position = Vector2( 11.8044, -4.29153e-05 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="destroyed" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="timer_blink" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="timer_blink" to="." method="_on_timer_blink_timeout"]
