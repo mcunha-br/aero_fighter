@@ -9,7 +9,7 @@
 [ext_resource path="res://prefabs/others/enemy_weapon.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 12.1228 )
+extents = Vector2( 12.7908, 12.1228 )
 
 [node name="enemy_tank" type="Area2D" groups=[
 "enemy",

@@ -5,8 +5,8 @@
 [ext_resource path="res://scritps/enemies/enemy_helicopter.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/others/explosion_2.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 29.3141 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 37.0028
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
@@ -44,7 +44,6 @@ shape = SubResource( 1 )
 
 [node name="animated_sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
-frame = 2
 playing = true
 
 [node name="timer_blink" type="Timer" parent="."]
