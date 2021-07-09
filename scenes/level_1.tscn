@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://prefabs/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/level/level_1.png" type="Texture" id=2]
@@ -6,8 +6,108 @@
 [ext_resource path="res://prefabs/enemies/helicopter_hard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/enemies/enemy_tank.tscn" type="PackedScene" id=5]
 [ext_resource path="res://prefabs/others/powerup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fonts/aero.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://prefabs/others/icon_f18.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scritps/ui/ui_gameplayer.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0.321569, 1, 1 )
+font_data = ExtResource( 7 )
 
 [node name="level_1" type="Node2D"]
+
+[node name="canvas_ui" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="canvas_ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_one" type="Control" parent="canvas_ui/ui"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 148.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="txt_1p" type="Label" parent="canvas_ui/ui/player_one"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -7.5
+margin_right = 40.0
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 1 )
+text = "1P"
+valign = 1
+
+[node name="txt_score" type="Label" parent="canvas_ui/ui/player_one"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -7.5
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="container" type="HBoxContainer" parent="canvas_ui/ui/player_one"]
+margin_left = -2.11893
+margin_top = 18.0
+margin_right = 91.8811
+margin_bottom = 38.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon_f18" parent="canvas_ui/ui/player_one/container" instance=ExtResource( 8 )]
+
+[node name="icon_f19" parent="canvas_ui/ui/player_one/container" instance=ExtResource( 8 )]
+margin_left = 20.0
+margin_right = 40.0
+
+[node name="player_two" type="Control" parent="canvas_ui/ui"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -148.0
+margin_top = 5.0
+margin_right = -10.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="txt_2p" type="Label" parent="canvas_ui/ui/player_two"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -7.5
+margin_right = 40.0
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 1 )
+text = "2P"
+valign = 1
+
+[node name="txt_score" type="Label" parent="canvas_ui/ui/player_two"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -7.5
+margin_bottom = 7.5
+custom_fonts/font = SubResource( 1 )
+text = "PUSH START"
+align = 2
+valign = 1
 
 [node name="background" type="Sprite" parent="."]
 position = Vector2( 181.224, -350.177 )
@@ -20,7 +120,7 @@ texture = ExtResource( 2 )
 position = Vector2( 178.006, 268.643 )
 
 [node name="powerup" parent="wolrd" instance=ExtResource( 6 )]
-position = Vector2( 134.526, 56.5722 )
+position = Vector2( 116.12, 64.1232 )
 
 [node name="powerup2" parent="wolrd" instance=ExtResource( 6 )]
 position = Vector2( 257.025, 53.0086 )
@@ -30,6 +130,7 @@ position = Vector2( 257.025, 53.0086 )
 
 [node name="helicopter_normal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 262.963, 130.147 )
+energy = 2
 
 [node name="helicopter_hard" parent="." instance=ExtResource( 4 )]
 position = Vector2( 313.687, 126.81 )

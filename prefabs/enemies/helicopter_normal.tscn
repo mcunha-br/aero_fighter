@@ -32,6 +32,7 @@ animations = [ {
 "enemy",
 ]]
 modulate = Color( 0.937255, 0.937255, 0.937255, 1 )
+z_index = 2
 script = ExtResource( 3 )
 explosion = ExtResource( 4 )
 
@@ -46,7 +47,7 @@ shape = SubResource( 1 )
 
 [node name="animated_sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="timer_blink" type="Timer" parent="."]

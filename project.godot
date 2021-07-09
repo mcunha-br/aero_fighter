@@ -14,6 +14,10 @@ config/name="YT_AreroFither"
 run/main_scene="res://scenes/level_1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameController="*res://scritps/singleton/game_controller.gd"
+
 [display]
 
 window/size/width=360

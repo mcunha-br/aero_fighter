@@ -14,6 +14,7 @@ extents = Vector2( 12.7908, 12.1228 )
 [node name="enemy_tank" type="Area2D" groups=[
 "enemy",
 ]]
+z_index = 1
 script = ExtResource( 4 )
 explosion = ExtResource( 5 )
 
